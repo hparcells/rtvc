@@ -1,4 +1,16 @@
 {
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "files.exclude": {
+    ".next": true,
+    "node_modules": true,
+    ".eslintrc": true,
+    ".gitignore": true,
+    ".prettierrc": true,
+    "next-env.d.ts": true,
+    "next.config.js": true,
+    "NEXT.md": true,
+    "package-lock.json": true,
+    "tsconfig.json": true
+  }
 }
