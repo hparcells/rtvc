@@ -1,0 +1,13 @@
+{
+  "version": "0.2",
+  "ignorePaths": [
+    ".eslintrc",
+    ".prettierrc",
+    "cspell.json"
+  ],
+  "words": [
+    "hunterparcells",
+    "RTVC",
+    "unoptimized"
+  ]
+}

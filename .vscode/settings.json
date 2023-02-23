@@ -2,15 +2,20 @@
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "files.exclude": {
+    ".github": true,
     ".next": true,
+    ".turbo": true,
     "node_modules": true,
     ".eslintrc": true,
     ".gitignore": true,
     ".prettierrc": true,
+    "cspell.json": true,
+    "LICENSE": true,
     "next-env.d.ts": true,
     "next.config.js": true,
     "NEXT.md": true,
     "package-lock.json": true,
-    "tsconfig.json": true
+    "tsconfig.json": true,
+    "turbo.json": true
   }
 }

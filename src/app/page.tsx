@@ -2,10 +2,11 @@
 
 import 'regenerator-runtime';
 
-import fs from 'fs';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+
+import packageJson from '../../package.json';
 
 function IndexPage() {
   const [apiKey, setApiKey] = useState<string>('');
@@ -82,10 +83,14 @@ function IndexPage() {
 
   return (
     <>
+      <h1>RTVC</h1>
+      <p>
+        <em>v{packageJson.version}</em>
+      </p>
       <form>
         <label htmlFor='apiKey'>ElevenLabs API Key</label>
         <input
-          type='text'
+          type='password'
           id='apiKey'
           name='apiKey'
           value={apiKey}
