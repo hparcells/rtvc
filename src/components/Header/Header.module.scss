@@ -1,4 +1,4 @@
-@use '../../styles/variables' as var;
+@import "~@blueprintjs/core/lib/scss/variables";
 
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 
@@ -12,11 +12,9 @@
   align-items: baseline;
   gap: 5px;
 
-  background-color: var.$dark;
+  background-color: $dark-gray1;
 
-  border-bottom: 1px solid #444444;
-
-  color: var.$text;
+  border-bottom: 1px solid $dark-gray5;
 }
 
 .title {

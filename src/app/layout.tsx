@@ -4,7 +4,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <head />
-      <body>{children}</body>
+      <body className='bp4-dark'>{children}</body>
     </html>
   );
 }

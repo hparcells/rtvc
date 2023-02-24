@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export async function getVoices(apiKey: string) {
+import { IVoice } from '@/types/elevenlabs';
+
+export async function getVoices(apiKey: string): Promise<IVoice[]> {
   const { data } = await axios.get('https://api.elevenlabs.io/v1/voices', {
     headers: {
       'xi-api-key': apiKey
@@ -16,7 +18,7 @@ export async function getVoices(apiKey: string) {
  * @param text The text to transcribe.
  * @returns A local URL to the audio file.
  */
-export async function getAudio(voiceId: string, apiKey: string, text: string) {
+export async function getAudio(voiceId: string, apiKey: string, text: string): Promise<string> {
   const { data } = await axios.post(
     `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
     {

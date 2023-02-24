@@ -1,4 +1,4 @@
-@use '../../styles/variables' as var;
+@import "~@blueprintjs/core/lib/scss/variables";
 
 .root {
   width: 100%;
@@ -8,11 +8,14 @@
   max-width: 800px;
   margin: auto;
   
-  background-color: var.$dark;
+  background-color: $dark-gray1;
 
   padding: 1em;
   border-radius: 5px;
-  border: 1px solid #444444;
-  
-  color: var.$text;
+  border: 1px solid $dark-gray5;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 5px;
 }
