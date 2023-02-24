@@ -83,38 +83,40 @@ function Body() {
 
   return (
     <div className={classes.root}>
-      <form>
-        <label htmlFor='apiKey'>ElevenLabs API Key</label>
-        <input
-          type='password'
-          id='apiKey'
-          name='apiKey'
-          value={apiKey}
-          onChange={(e) => {
-            return setApiKey(e.target.value);
-          }}
-        />
-        <br />
-        <label htmlFor='voice'>Select a Voice</label>
-        <select
-          value={selectedVoice}
-          onChange={(e) => {
-            return setSelectedVoice(e.target.value);
-          }}
-        >
-          {voices?.map((voice) => {
-            return (
-              <option key={voice.id} value={voice.id}>
-                {voice.name}
-              </option>
-            );
-          })}
-        </select>
-      </form>
-      <p>Status: {listening ? 'ENABLED' : 'DISABLED'}</p>
-      <button onClick={startListening}>Start</button>
-      <button onClick={stopListening}>Stop</button>
-      <p>{transcript}</p>
+      <div className={classes.content}>
+        <form>
+          <label htmlFor='apiKey'>ElevenLabs API Key</label>
+          <input
+            type='password'
+            id='apiKey'
+            name='apiKey'
+            value={apiKey}
+            onChange={(e) => {
+              return setApiKey(e.target.value);
+            }}
+          />
+          <br />
+          <label htmlFor='voice'>Select a Voice</label>
+          <select
+            value={selectedVoice}
+            onChange={(e) => {
+              return setSelectedVoice(e.target.value);
+            }}
+          >
+            {voices?.map((voice) => {
+              return (
+                <option key={voice.id} value={voice.id}>
+                  {voice.name}
+                </option>
+              );
+            })}
+          </select>
+        </form>
+        <p>Status: {listening ? 'ENABLED' : 'DISABLED'}</p>
+        <button onClick={startListening}>Start</button>
+        <button onClick={stopListening}>Stop</button>
+        <p>{transcript}</p>
+      </div>
     </div>
   );
 }

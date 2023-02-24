@@ -1,3 +1,4 @@
+import Footer from '../components/Footer/Footer';
 import 'regenerator-runtime';
 
 import Body from '../components/Body/Body';
@@ -7,14 +8,13 @@ import classes from './page.module.scss';
 
 function IndexPage() {
   return (
-    <>
+    <div className={classes.root}>
       <Header />
       <div className={classes.content}>
-        <div className={classes.bodyWrapper}>
-          <Body />
-        </div>
+        <Body />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
