@@ -1,3 +1,5 @@
+import '../styles/global.scss';
+
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
