@@ -1,3 +1,5 @@
+@use '../../styles/variables' as var;
+
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 
 .root {
@@ -10,11 +12,11 @@
   align-items: baseline;
   gap: 5px;
 
-  background-color: #171717;
+  background-color: var.$dark;
 
   border-bottom: 1px solid #444444;
 
-  color: #dadada;
+  color: var.$text;
 }
 
 .title {

@@ -6,6 +6,7 @@
     ".next": true,
     ".turbo": true,
     "node_modules": true,
+    ".eslintignore": true,
     ".eslintrc": true,
     ".gitignore": true,
     ".prettierrc": true,

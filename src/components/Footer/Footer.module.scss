@@ -1,14 +1,18 @@
+@use '../../styles/variables' as var;
+
 .root {
   width: 100%;
+
+  padding: 1em 0;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  background-color: #171717;
+  background-color: var.$dark;
 
   border-top: 1px solid #444444;
 
-  color: #ffffff;
+  color: var.$text;
 }
