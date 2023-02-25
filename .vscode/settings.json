@@ -15,6 +15,7 @@
     "next-env.d.ts": true,
     "next.config.js": true,
     "NEXT.md": true,
+    "out": true,
     "package-lock.json": true,
     "tsconfig.json": true,
     "turbo.json": true
