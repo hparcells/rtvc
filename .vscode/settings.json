@@ -19,5 +19,6 @@
     "package-lock.json": true,
     "tsconfig.json": true,
     "turbo.json": true
-  }
+  },
+  "discord.enabled": true
 }
