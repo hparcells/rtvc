@@ -29,3 +29,34 @@ export interface IVoice {
   available_for_tiers: string[];
   settings: ISettings;
 }
+
+interface Language {
+  iso_code: string;
+  display_name: string;
+}
+
+interface IModel {
+  model_id: string;
+  display_name: string;
+  supported_languages: Language[];
+}
+
+interface IInvoice {
+  amount_due_cents: number;
+  next_payment_attempt_unix: number;
+}
+
+export interface ISubscription {
+  tier: string;
+  character_count: number;
+  character_limit: number;
+  can_extend_character_limit: boolean;
+  allowed_to_extend_character_limit: boolean;
+  need_character_count_reset_unit: number;
+  voice_limit: number;
+  can_extend_voice_limit: boolean;
+  can_use_instant_voice_cloning: boolean;
+  available_models: IModel[];
+  status: string;
+  next_invoice: IInvoice;
+}

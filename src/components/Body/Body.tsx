@@ -9,9 +9,9 @@ import { Button, InputGroup, MenuItem, Text } from '@blueprintjs/core/lib/esm/co
 import { Select2 } from '@blueprintjs/select';
 import { ItemRenderer } from '@blueprintjs/select/lib/esm/common';
 
-import { getAudio, getVoices } from '../../util/elevenlabs';
+import { getAudio, getSubscriptionInfo, getVoices } from '../../util/elevenlabs';
 
-import { IVoice } from '@/types/elevenlabs';
+import { ISubscription, IVoice } from '@/types/elevenlabs';
 
 import classes from './Body.module.scss';
 
@@ -35,15 +35,37 @@ function renderVoice(
 
 function Body() {
   const [apiKey, setApiKey] = useState<string>('');
-  const [voices, setVoices] = useState<any[]>([]);
+  const [voices, setVoices] = useState<IVoice[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<IVoice | null>(null);
+  const [subscriptionInfo, setSubscriptionInfo] = useState<ISubscription | null>(null);
 
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
+
+  async function doAudio() {
+    if (transcript !== '' && apiKey !== '' && selectedVoice !== null) {
+      try {
+        const audioUrl = await getAudio(
+          selectedVoice.voice_id,
+          apiKey,
+          transcript.substring(0, 5000)
+        );
+        new Audio(audioUrl).play();
+
+        setSubscriptionInfo(await getSubscriptionInfo(apiKey));
+      } catch {
+        // Do nothing
+      }
+    }
+    resetTranscript();
+    SpeechRecognition.startListening();
+  }
 
   useEffect(() => {
     (async () => {
       if (apiKey.length === 32) {
         try {
+          setSubscriptionInfo(await getSubscriptionInfo(apiKey));
+
           const voices = await getVoices(apiKey);
           setVoices(voices);
           setSelectedVoice(voices[0]);
@@ -59,17 +81,16 @@ function Body() {
 
   useEffect(() => {
     (async () => {
+      if (transcript.length > 5000) {
+        await doAudio();
+      }
+    })();
+  }, [transcript]);
+
+  useEffect(() => {
+    (async () => {
       if (!listening) {
-        if (transcript !== '' && apiKey !== '' && selectedVoice !== null) {
-          try {
-            const audioUrl = await getAudio(selectedVoice.voice_id, apiKey, transcript);
-            new Audio(audioUrl).play();
-          } catch {
-            // Do nothing
-          }
-        }
-        resetTranscript();
-        SpeechRecognition.startListening();
+        await doAudio();
       }
     })();
   }, [listening]);
@@ -126,10 +147,18 @@ function Body() {
           </Button>
         </div>
 
-        <h3>Transcript</h3>
+        <h3>Transcript ({transcript.length}/5000)</h3>
         <pre className='bp4-code-block'>
           <code>{transcript || 'Say something...'}</code>
         </pre>
+        <div className={classes.belowTranscript}>
+          {subscriptionInfo && (
+            <Text>
+              Total quota remaining:{' '}
+              {subscriptionInfo.character_limit - subscriptionInfo.character_count}
+            </Text>
+          )}
+        </div>
       </div>
     </div>
   );
